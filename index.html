@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Hello world</title>
+</head>
+
+<body>
+    <h1 x-data="{message: 'Hello World'}" x-text="message"></h1>
+    <div x-data="{counter: 0, showAlert(){alert('Hallo Nanda')}}">
+        <div x-data="{pesan: 'Hallo Apa Kabar?'}">
+            <h2 x-text="pesan"></h2>
+        </div>
+        <button x-on:click="counter++">+</button>
+        <button x-on:click="counter--">-</button>
+        <h1 x-text="counter"></h1>
+        <button x-on:click="showAlert()">Tampilkan Alert</button>
+    </div>
+    <br />
+    <button x-data="{pesan:'Hello, nanda how are you?', showPesan(){alert(this.pesan)}}" x-on:click="showPesan()">
+      Pesan
+    </button>
+
+    <br />
+    <br />
+    <h2>x-show</h2>
+    <div x-data="{tampilkanPesan: false}">
+        <h2 x-show="tampilkanPesan">Pesan Tampil</h2>
+        <p x-show.important="tampilkanPesan">Singkil</p>
+    </div>
+    <br />
+    <br />
+
+    <h2>x-init</h2>
+    <div x-data="{message1: 'ini component alpine'}">
+        <div x-init="console.log('ini pesan dari x-init')"></div>
+    </div>
+    <div x-data="{message2: 'ini component alpine2', init(){console.log('ini adalah pesan dari attribute init di attribute data')}}"></div>
+    <div x-data="{message3: 'ini component 3'}">
+        <div x-init="$nextTick(()=>{console.log('ini di eksekusi ketika component alpine selesai di render')})"></div>
+    </div>
+    <br /><br />
+
+    <div x-data="{placeholder: 'Alamat Email', name:'Masukkan nama' }">
+        <input type="text" x-bind:placeholder="placeholder" />
+        <input type="text" :placeholder="name" />
+    </div>
+
+    <hr />
+    <br />
+    <hr />
+    <div x-data="{name: '', pesan: 'Tulis nama kamu'}">
+        <h1>Belajar AlipineJs</h1>
+        <h2 x-text="name">Nama fdsafaf:</h2>
+        <input type="text" :placeholder="pesan" x-on:change="name = $event.target.value" />
+        <button x-on:click="name = 'merah'">Tampilkan namaa</button>
+    </div>
+
+    <br /><br />
+    <h2>Latihan</h2>
+    <div x-data="{
+    name: 'masukkan nama',
+    address:'masukkan almat',
+        }">
+        <input type="text" :placeholder="name" />
+        <input type="text" :placeholder="address" />
+    </div>
+</body>
+
+</html>
